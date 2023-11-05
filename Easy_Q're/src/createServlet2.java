@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import db.SelectBean;
+import db.SignBean;
 
 public class createServlet2 extends HttpServlet {
 
@@ -24,9 +24,10 @@ public class createServlet2 extends HttpServlet {
     	}catch(Exception e) {
     		e.printStackTrace();
     	}
-    	SelectBean SB = new SelectBean();
+    	SignBean SB = new SignBean();
     	try {
-    		SB.selectQreCode();
+    		//アンケートコードを取り出す
+    		//SB.selectQreCode();
     	}catch(Exception e) {
     		e.printStackTrace();
     	}

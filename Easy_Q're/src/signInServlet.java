@@ -6,8 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import db.InsertBean;
-import db.SelectBean;
+import db.SignBean;
 
 public class signInServlet extends HttpServlet{
 		public void doGet(HttpServletRequest request,
@@ -21,13 +20,12 @@ public class signInServlet extends HttpServlet{
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
-	SelectBean SB = new SelectBean();
-	InsertBean IB = new InsertBean();
+	SignBean SB = new SignBean();
 	try {
 		//データベースにユーザコードがある場合
 		SB.selectUserCode(uc);
 		//setterでhome.jspに渡すためのIDを取得
-		IB.setUsercode(uc);
+		SB.setUsercode(uc);
 		//JSPに情報を渡す
 		request.setAttribute("SB", SB);
 		String url="/home.jsp";

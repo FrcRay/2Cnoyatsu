@@ -6,8 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import db.InsertBean;
-import db.SelectBean;
+import db.SignBean;
 
 public class signUpServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request,
@@ -26,22 +25,21 @@ public class signUpServlet extends HttpServlet{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		InsertBean IB = new InsertBean();
-		SelectBean SB = new SelectBean();
+		SignBean SB = new SignBean();
 		//テーブルを作成
 		try {
 			//Beanにデータを渡す
-			IB.setUsercode(uc);
-			IB.setUsername(un);
-			IB.setGender(gender);
-			IB.setBirthday(birthday);
-			IB.setAge(age);
+			SB.setUsercode(uc);
+			SB.setUsername(un);
+			SB.setGender(gender);
+			SB.setBirthday(birthday);
+			SB.setAge(age);
 			
 			//IB.createUITable();
-			IB.insertUserInfo();
+			SB.insertUserInfo();
 			
 			//JSPに情報を渡す
-			request.setAttribute("IB", IB);
+			request.setAttribute("SB", SB);
 			String url="/home.jsp";
 			RequestDispatcher dispatcher
 				=getServletContext().getRequestDispatcher(url);

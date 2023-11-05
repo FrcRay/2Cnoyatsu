@@ -1,16 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id = "IB" class="db.InsertBean" scope="request"/>
+<jsp:useBean id = "SB" class="db.SignBean" scope="request"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/2C_Survey/css/home.css">
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/Easy_Q're/css/home.css">
 <title>HOME</title>
 </head>
 <!-- action内のurlは/から始めない -->
 <body bgcolor="#FFFFFF">
 <%
-	String uc = (String) IB.getUsercode();
-	String un = (String) IB.getUsername();
+	String uc = (String) SB.getUsercode();
+	String un = (String) SB.getUsername();
 %>
 <h1>ログイン中のユーザコード：<%= uc %><br>ログイン中のユーザネーム：<%= un %></h1>
 <div class = "buttons">
