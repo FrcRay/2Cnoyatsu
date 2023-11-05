@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/2C_Survey/css/home.css">
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/Easy_Q're/css/home.css">
 <title>HOME</title>
 </head>
 <!-- action内のurlは/から始めない -->

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/2C_Survey/css/create.css">
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/Easy_Q're/css/create.css">
 <title>レスポンスページ</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
 <h1><%= mess %></h1>
 	<br>
 	<br>
-	<FORM method="GET" action="http://localhost:8080/2C_Survey/sign.html" class = "bottombt">
+	<FORM method="GET" action="http://localhost:8080/Easy_Q're/sign.html" class = "bottombt">
 			<input type="submit" value="サインイン・サインアップページに戻る">
 	</FORM>
 </body>
