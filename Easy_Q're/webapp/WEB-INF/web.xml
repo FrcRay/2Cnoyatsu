@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+  <servlet>
+    <servlet-name>signIn</servlet-name>
+    <servlet-class>signInServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>signUp</servlet-name>
+    <servlet-class>signUpServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>answer</servlet-name>
+    <servlet-class>answerServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>create</servlet-name>
+    <servlet-class>createServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>create2</servlet-name>
+    <servlet-class>createServlet2</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>result</servlet-name>
+    <servlet-class>resultServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>signIn</servlet-name>
+    <url-pattern>/servlet/signIn/</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>signUp</servlet-name>
+    <url-pattern>/servlet/signUp/</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>answer</servlet-name>
+    <url-pattern>/servlet/answer/</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>create</servlet-name>
+    <url-pattern>/servlet/create/</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>create2</servlet-name>
+    <url-pattern>/servlet/create2/</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet-mapping>
+    <servlet-name>result</servlet-name>
+    <url-pattern>/servlet/result/</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

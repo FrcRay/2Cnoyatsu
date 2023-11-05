@@ -1,0 +1,38 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/2C_Survey/css/home.css">
+	<title>サインアップページ</title>
+	<h1>新規ユーザ作成</h1>
+
+</head>
+<body>
+<div class = "sign">
+	<FORM method="GET" action="servlet/signUp/">
+		<h3>ユーザコード入力欄</h3>
+		<h4>任意のユーザコードを英数字5文字で入力してください</h4>
+		<input type="text" name = "uc" required maxlength="5"/>
+		<h4>任意のユーザネームを10以内文字で入力してください</h4>
+		<input type="text" name = "un" required maxlength="10"/>
+		<h4>性別を選択してください</h4>
+		<div>
+			<label>
+				<input type="radio" name = "gender" value="男" checked/>男
+			</label>
+			<label>
+				<input type="radio" name = "gender" value="女"/>女
+			</label>
+		</div>
+		<h4>誕生日を入力してください</h4>
+		<input type="date" name = "birthday"value="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>" required/>
+		<h4>年齢を入力してください</h4>
+		<input type="number" name = "age" maxlength="150" required/>
+		<input type="submit" value="ユーザを作成する" size="50"/>
+	</FORM>
+</div>
+	<FORM method="GET" action="http://localhost:8080/2C_Survey/sign.html" class = "bottombt">
+			<input type="submit" value="サインイン・サインアップページに戻る" style="background-color:#f0908d;">
+	</FORM>
+</body>
+</html>

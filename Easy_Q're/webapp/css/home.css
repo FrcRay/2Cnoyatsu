@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.inputs {
+    width: 50%;
+    min-width: 200px;
+    max-width: 600px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #68779a;
+    background: #cbe8fa;
+    cursor: pointer;
+}
+.buttons{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+ 	height: 100vh;
+ 	margin: 0;
+}
+.sign{
+	display: inline;
+}

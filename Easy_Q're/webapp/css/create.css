@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+h1 {
+    position: absolute;
+    top: 0;
+   	left: 0;
+  	margin: 10px;
+}
+        
+.qreDetail {
+   	display: block;
+    text-align: left;
+    width: 80%;
+    height: 20vh;
+ 	padding: 10vh;
+}
+
+.tarea {
+	resize: none;
+  	text-align: left;
+  	width: 100vh; /* テキストエリアの幅を調整 */
+ 	height: 20vh; /* テキストエリアの高さを調整 */
+ 	font-size: 18px;
+}
+
+label {
+  	display: block;
+ 	text-align: left;
+}
+
+.bottombt {
+	display: inline-block;
+    margin-right: 5px; /* ボタン間の間隔を調整 (必要に応じて) */
+}
+
+.bottombtpo {
+  	text-align: center;
+ 	margin-top: 20px; /* ボタンとテキストエリアの間隔を調整 (必要に応じて) */
+}
+.option{
+	resize: none;
+	text-align: left;
+	display: inline-block;
+	width: 60vh; /* テキストエリアの幅を調整 */
+ 	height: 10vh; /* テキストエリアの高さを調整 */
+ 	font-size: 18px;
+}
+.options {
+	display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
