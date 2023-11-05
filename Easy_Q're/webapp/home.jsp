@@ -14,13 +14,13 @@
 %>
 <h1>ログイン中のユーザコード：<%= uc %><br>ログイン中のユーザネーム：<%= un %></h1>
 <div class = "buttons">
-	<FORM method="GET" action="../answer/">
+	<FORM method="GET" action="servlet/answer/">
 		<input type="submit" value="アンケート回答" size="50" class = "inputs"/>
 	</FORM>
-	<FORM method="GET" action="../create/">
+	<FORM method="GET" action="servlet/create/">
 		<input type="submit" value="アンケート作成" size="50" class = "inputs"/>
 	</FORM>
-	<FORM method="GET" action="../result/">
+	<FORM method="GET" action="servlet/result/">
 		<input type="submit" value="アンケート結果" size="50" class = "inputs"/>
 	</FORM>
 </div>

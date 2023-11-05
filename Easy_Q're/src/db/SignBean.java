@@ -55,7 +55,7 @@ public class SignBean implements Serializable{
 	
 	//ユーザ情報テーブルを作成
 	public void createUITable() throws Exception{
-		String url = "jdbc:postgresql:tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
+		String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 		con = DriverManager.getConnection(url,"al21020","bond");
 		
 		String sql = "CREATE TABLE " + "UI"+ this.usercode + "("
@@ -73,7 +73,7 @@ public class SignBean implements Serializable{
 	
 	//ユーザ情報をデータベースに登録
 	public void insertUserInfo() throws Exception{
-		String url = "jdbc:postgresql:tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
+		String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 		con = DriverManager.getConnection(url,"al21020","bond");
 		
 		String sql = "INSERT INTO UI0 VALUES(?.?.?.?.?)";
