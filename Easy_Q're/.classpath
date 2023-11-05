@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/pleiades/2022-12/workspace/PreEasy_Q&apos;re/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/lib/postgresql-42.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/mydocker/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/mydocker/lib/postgresql-42.6.0.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>
