@@ -35,7 +35,7 @@ public class signUpServlet extends HttpServlet{
 			SB.setBirthday(birthday);
 			SB.setAge(age);
 			
-			//IB.createUITable();
+			SB.createUITable();
 			SB.insertUserInfo();
 			
 			//JSPに情報を渡す
