@@ -56,7 +56,7 @@ public class SignBean implements Serializable{
 	//ユーザ情報テーブルを作成
 	public void createUITable() throws Exception{
 		String url = "jdbc:postgresql:tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
-		con = DriverManager.getConnection(url,"al21020","&Wq5v7r2j8Tc");
+		con = DriverManager.getConnection(url,"al21020","bond");
 		
 		String sql = "CREATE TABLE " + "UI"+ this.usercode + "("
 				+ "USERCODE varchar(5) primary key,"
