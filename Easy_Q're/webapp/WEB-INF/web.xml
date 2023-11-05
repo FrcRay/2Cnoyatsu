@@ -30,7 +30,12 @@
     <servlet-name>result</servlet-name>
     <servlet-class>resultServlet</servlet-class>
   </servlet>
-
+  
+   <servlet>
+    <servlet-name>result2</servlet-name>
+    <servlet-class>result2Servlet</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>signIn</servlet-name>
     <url-pattern>/servlet/signIn/</url-pattern>
@@ -61,5 +66,10 @@
     <servlet-name>result</servlet-name>
     <url-pattern>/servlet/result/</url-pattern>
   </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>result2</servlet-name>
+    <url-pattern>/servlet/result2/</url-pattern>
+  </servlet-mapping>  
   
 </web-app>
