@@ -17,6 +17,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>answer2</servlet-name>
+    <servlet-class>answerServlet2</servlet-class>
+  </servlet>
+
+  <servlet>
     <servlet-name>create</servlet-name>
     <servlet-class>createServlet</servlet-class>
   </servlet>
@@ -44,6 +49,11 @@
   <servlet-mapping>
     <servlet-name>answer</servlet-name>
     <url-pattern>/servlet/answer/</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>answer2</servlet-name>
+    <url-pattern>/servlet/answer2/</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
