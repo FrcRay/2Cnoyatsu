@@ -8,16 +8,19 @@
 	</head>
 	<body>
 		<%
+			String Qe = (String) kB.getQuestion();
 			String C1 = (String) kB.getChoices(1);
 			String C2 = (String) kB.getChoices(2);
 			String C3 = (String) kB.getChoices(3);
 		%>
 		<h1>アンケート回答ページ</h1>
 		
+		<h3><%=Qe %></h3>
+		
 		<FORM method="GET" action="../../servlet/answer2/">
-			<p><input type="submit" value= "<%=C1 %>" ></p>
-			<p><input type="submit" value="<%=C2 %>"></p>
-			<p><input type="submit" value="<%=C3 %>"></p>
+			<p><input type="submit" value= "<%=C1 %>" name = "1" ></p>
+			<p><input type="submit" value= "<%=C2 %>" name = "1"></p>
+			<p><input type="submit" value= "<%=C3 %>" name = "1"></p>
 		</FORM>
 	
 		<FORM method="GET" action="http://localhost:8080/Easy_Q're/home.jsp">
