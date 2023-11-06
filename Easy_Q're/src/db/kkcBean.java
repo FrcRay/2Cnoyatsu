@@ -6,9 +6,18 @@ import java.sql.Connection;
 public class kkcBean implements Serializable{
 	
 	static Connection con;
-	private String Choice = "";
+	private String choice = "test";
+	private String question = "test";
+	
+	public String getQuestion() {
+		return question;
+	}
 	
 	public String getChoices(int n) {
-		return Choice;
+		return choice;
+	}
+	
+	public void insertChoice(String c) {
+		
 	}
 }
