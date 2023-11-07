@@ -18,9 +18,12 @@
 		<h3><%=Qe %></h3>
 		
 		<FORM method="GET" action="../../servlet/answer2/">
-			<p><input type="submit" value= "<%=C1 %>" name = "1" ></p>
-			<p><input type="submit" value= "<%=C2 %>" name = "1"></p>
-			<p><input type="submit" value= "<%=C3 %>" name = "1"></p>
+			<p><input type="submit" value= "<%=C1 %>" name = "choice" ></p>
+			<p><input type="submit" value= "<%=C2 %>" name = "choice"></p>
+			<%if(C3 != "NULL"){ %>
+			<p><input type="submit" value= "<%=C3 %>" name = "choice"></p>
+			<%} %>
+
 		</FORM>
 	
 		<FORM method="GET" action="http://localhost:8080/Easy_Q're/home.jsp">

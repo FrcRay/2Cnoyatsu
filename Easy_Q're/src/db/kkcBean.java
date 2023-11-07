@@ -18,6 +18,6 @@ public class kkcBean implements Serializable{
 	}
 	
 	public void insertChoice(String c) {
-		
+		;
 	}
 }
