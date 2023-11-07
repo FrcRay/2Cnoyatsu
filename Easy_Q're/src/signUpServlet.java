@@ -34,21 +34,22 @@ public class signUpServlet extends HttpServlet{
 		}
 	    Date now = new Date();
 	    
-	    // Calendar型のインスタンス生成
+	    //Calendar型インスタンス生成
         Calendar calBirth = Calendar.getInstance();
         Calendar calNow = Calendar.getInstance();
 
-        // Date型をCalendar型に変換する
+        //Date型をCalendar型に変換
         calBirth.setTime(date);
         calNow.setTime(now);
 
-        // （現在年ー生まれ年）で年齢の計算
+        //年齢の計算
         age = calNow.get(Calendar.YEAR) - calBirth.get(Calendar.YEAR);
-        // 誕生月を迎えていなければ年齢-1
+        //誕生月を迎えていない場合は年齢-1
         if (calNow.get(Calendar.MONTH) < calBirth.get(Calendar.MONTH)) {
             age -= 1;
+        //誕生月を迎えている場合
         }else if (calNow.get(Calendar.MONTH) == calBirth.get(Calendar.MONTH)) {
-            // 誕生月は迎えているが、誕生日を迎えていなければ年齢−１
+            //誕生日を迎えていない場合年齢−１
             if (calNow.get(Calendar.DATE) < calBirth.get(Calendar.DATE)) {
                 age -= 1;
             }
