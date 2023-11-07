@@ -3,7 +3,6 @@ package db;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -76,17 +75,13 @@ public class SignBean implements Serializable{
 		String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 		con = DriverManager.getConnection(url,"al21020","bond");
 		
-		String sql = "INSERT INTO UI0 VALUES(?.?.?.?.?)";
-		PreparedStatement prestmt = con.prepareStatement(sql);
+		String sql = "INSERT INTO UI"+ this.usercode + " VALUES"
+				+ "('" + this.usercode + "','" + this.username + "','" + this.gender + "','" + this.birthday + "','" + this.age + "')";
 		
-		//データベースに送る情報の設定
-		prestmt.setString(1, this.usercode);
-		prestmt.setString(2, this.username);
-		prestmt.setString(3, this.gender);
-		prestmt.setString(3, this.birthday);
-		prestmt.setInt(3, this.age);
-		
-		prestmt.close();
+		Statement stmt = con.createStatement();
+		stmt.executeUpdate(sql);
+
+		stmt.close();
 		con.close();
 	}
 	
