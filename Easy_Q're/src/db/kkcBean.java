@@ -25,63 +25,71 @@ public class kkcBean implements Serializable{
 		}
 	}
 	
-	public String getQuestion(){
+	public int getQuestinCode() {
 		Random rand = new Random();
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		int MAX = 0;
-		int QN =0;
-		String Q = "";
-		String sqlM = "";	
+		int questionCode = 0;
 		String sql = "";
-		
-		//最大のアンケートコードを取得してそれ以下のアンケートコードをQNに格納
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery(sqlM);
-			while (rs.next()) {
-				MAX = rs.getInt("アンケートコード");
-			}
-			QN = rand.nextInt(MAX);
-		}catch(Exception e){
-			throw new IllegalStateException(e);
-		}
-		
-		try {
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				Q = rs.getString("アンケート内容");
+				MAX = rs.getInt("questionCode");
 			}
+			questionCode = rand.nextInt(MAX + 1);
 		}catch(Exception e){
 			throw new IllegalStateException(e);
 		}
-		
 		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
 		if(con != null) try {con.close();}catch(SQLException ignore) {}
-		return Q;
+		return questionCode;
 	}
 	
-	public String getChoices(String n) throws Exception{
+	public String getQuestion(int questionCode){
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String choice = "";
+		String question = "";
 		String sql = "";
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				choice = rs.getString("アンケート内容");
+				question = rs.getString("question");
+			}
+		}catch(Exception e){
+			throw new IllegalStateException(e);
+		}
+		
+		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
+		if(con != null) try {con.close();}catch(SQLException ignore) {}
+		return question;
+	}
+	
+	public String getOption(String optionNumber, int questionCode){
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String option = "";
+		String sql = "SELECT outcomeOption"+ optionNumber +"FROM QI WHERE ";
+		try {
+			con = getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				option = rs.getString("outcomeOption"+ optionNumber);
 			}
 		}catch(Exception e){
 			throw new IllegalStateException(e);
 		}
 		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
 		if(con != null) try {con.close();}catch(SQLException ignore) {}
-		return choice;
+		return option;
 	}
 	
 	public void insertChoice(String c) {
