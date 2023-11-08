@@ -22,10 +22,11 @@ public class signInServlet extends HttpServlet{
 	}
 	SignBean SB = new SignBean();
 	try {
-		//データベースにユーザコードがある場合
-		SB.selectUserCode(uc);
 		//setterでhome.jspに渡すためのIDを取得
 		SB.setUsercode(uc);
+		//データベースにユーザコードがある場合
+		SB.selectUserCode();
+		
 		//JSPに情報を渡す
 		request.setAttribute("SB", SB);
 		String url="/home.jsp";

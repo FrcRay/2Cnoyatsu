@@ -2,7 +2,7 @@
 <jsp:useBean id = "SB" class="db.SignBean" scope="request"/>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift-JIS">
 <link rel="stylesheet" type="text/css" href="http://localhost:8080/Easy_Q're/css/home.css">
 <title>HOME</title>
 </head>
