@@ -9,9 +9,9 @@
 	<body>
 		<%
 			String Qe = (String) kB.getQuestion();
-			String C1 = (String) kB.getChoices(1);
-			String C2 = (String) kB.getChoices(2);
-			String C3 = (String) kB.getChoices(3);
+			String C1 = (String) kB.getChoices(String(1));
+			String C2 = (String) kB.getChoices(String(2));
+			String C3 = (String) kB.getChoices(String(3));
 		%>
 		<h1>アンケート回答ページ</h1>
 		

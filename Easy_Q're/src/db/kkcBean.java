@@ -12,7 +12,6 @@ public class kkcBean implements Serializable{
 	private String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 	private String user = "al21016";
 	private String pass = "bond";
-	private String choice = "test";
 	
 	
 	public String getQuestion() throws Exception{
@@ -31,7 +30,17 @@ public class kkcBean implements Serializable{
 		return question;
 	}
 	
-	public String getChoices(int n) {
+	public String getChoices(String n) throws Exception{
+		con = DriverManager.getConnection(url, user ,pass);
+		Statement stmt = con.createStatement();
+		String sql = "SELECT 選択肢"+"n"+" FROM questionnaire WHERE アンケートコード ='" + n +"'";
+		ResultSet rs = stmt .executeQuery(sql);
+		String choice = "";
+		while (rs.next()) {
+		    choice = rs.getString("アンケート");
+		}
+		con.close();
+		stmt.close();
 		return choice;
 	}
 	
