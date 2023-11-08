@@ -9,18 +9,18 @@
 <!-- action内のurlは/から始めない -->
 <body bgcolor="#FFFFFF">
 <%
-	String uc = (String) SB.getUsercode();
+	int uc = (int) SB.getUsercode();
 	String un = (String) SB.getUsername();
 %>
 <h1>ログイン中のユーザコード：<%= uc %><br>ログイン中のユーザネーム：<%= un %></h1>
 <div class = "buttons">
-	<FORM method="GET" action="servlet/answer/">
+	<FORM method="GET" action="../answer/">
 		<input type="submit" value="アンケート回答" size="50" class = "inputs"/>
 	</FORM>
-	<FORM method="GET" action="servlet/create/">
+	<FORM method="GET" action="../create/">
 		<input type="submit" value="アンケート作成" size="50" class = "inputs"/>
 	</FORM>
-	<FORM method="GET" action="servlet/result/">
+	<FORM method="GET" action="../result/">
 		<input type="submit" value="アンケート結果" size="50" class = "inputs"/>
 	</FORM>
 </div>

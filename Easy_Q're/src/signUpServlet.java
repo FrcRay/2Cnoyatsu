@@ -17,7 +17,7 @@ public class signUpServlet extends HttpServlet{
 			HttpServletResponse response)
 	throws IOException, ServletException{
 		//htmlで入力したデータを取得
-		String uc = request.getParameter("uc");
+		int uc = Integer.parseInt(request.getParameter("uc"));
 		String un = request.getParameter("un");
 		String gender = request.getParameter("gender");
 		String birthday = request.getParameter("birthday");

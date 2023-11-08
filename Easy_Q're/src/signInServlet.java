@@ -13,7 +13,7 @@ public class signInServlet extends HttpServlet{
             			HttpServletResponse response)
             throws IOException, ServletException
 	{
-	String uc = request.getParameter("UC");
+	int uc = Integer.parseInt(request.getParameter("UC"));
 	try {
 		//JDBCドライバのロード
 		Class.forName("org.postgresql.Driver");
@@ -22,11 +22,11 @@ public class signInServlet extends HttpServlet{
 	}
 	SignBean SB = new SignBean();
 	try {
-		//setterでhome.jspに渡すためのIDを取得
+		//setterでhome.jspに渡すためのIDをBeanに渡す
 		SB.setUsercode(uc);
 		//データベースにユーザコードがある場合
-		SB.selectUserCode();
-		
+		String un = SB.selectUserName();
+		SB.setUsername(un);
 		//JSPに情報を渡す
 		request.setAttribute("SB", SB);
 		String url="/home.jsp";
