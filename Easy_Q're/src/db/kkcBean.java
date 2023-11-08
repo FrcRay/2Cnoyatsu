@@ -33,7 +33,7 @@ public class kkcBean implements Serializable{
 	public String getChoices(String n) throws Exception{
 		con = DriverManager.getConnection(url, user ,pass);
 		Statement stmt = con.createStatement();
-		String sql = "SELECT 選択肢"+"n"+" FROM questionnaire WHERE アンケートコード ='" + n +"'";
+		String sql = "SELECT 選択肢"+ n +" FROM questionnaire WHERE アンケートコード ='" + n +"'";
 		ResultSet rs = stmt .executeQuery(sql);
 		String choice = "";
 		while (rs.next()) {
