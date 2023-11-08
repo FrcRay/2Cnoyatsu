@@ -32,7 +32,7 @@ public class kkcBean implements Serializable{
 		ResultSet rs = null;
 		int MAX = 0;
 		int questionCode = 0;
-		String sql = "";
+		String sql = "SELECT MAX questionCode FROM QI";
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
@@ -54,7 +54,7 @@ public class kkcBean implements Serializable{
 		Statement stmt = null;
 		ResultSet rs = null;
 		String question = "";
-		String sql = "";
+		String sql = "SELECT question FROM QI WHERE questionCode = '%" + questionCode + "%'";
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
