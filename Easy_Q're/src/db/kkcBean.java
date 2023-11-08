@@ -4,43 +4,65 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class kkcBean implements Serializable{
 	
-	static Connection con;
-	private String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
-	private String user = "al21016";
-	private String pass = "bond";
+	private static String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
+	private static String user = "al21016";
+	private static String pass = "bond";
 	
 	
-	public String getQuestion() throws Exception{
-		con = DriverManager.getConnection(url, user ,pass);
-		Statement stmt = con.createStatement();
-		String AN = "00001";
-		String sql = "SELECT アンケート FROM questionnaire WHERE アンケートコード ='" + AN +"'";
-		ResultSet rs = stmt .executeQuery(sql);
-		
-		String question = "";
-		while (rs.next()) {
-		    question = rs.getString("アンケート");
+	public static Connection getConnection(){
+		try {
+			Connection con = null;
+			con = DriverManager.getConnection(url, user ,pass);
+			return con;
+		}catch(Exception e) {
+			throw new IllegalStateException(e);
 		}
-		con.close();
-		stmt.close();
-		return question;
+	}
+	
+	public String getQuestion(){
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String Q = "";
+		String sql = null;
+		try {
+			con = getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Q = rs.getString("アンケート内容");
+			}
+		}catch(Exception e){
+			throw new IllegalStateException(e);
+		}	
+		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
+		if(con != null) try {con.close();}catch(SQLException ignore) {}
+		return Q;
 	}
 	
 	public String getChoices(String n) throws Exception{
-		con = DriverManager.getConnection(url, user ,pass);
-		Statement stmt = con.createStatement();
-		String sql = "SELECT 選択肢"+ n +" FROM questionnaire WHERE アンケートコード ='" + n +"'";
-		ResultSet rs = stmt .executeQuery(sql);
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
 		String choice = "";
-		while (rs.next()) {
-		    choice = rs.getString("アンケート");
+		String sql = null;
+		try {
+			con = getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				choice = rs.getString("アンケート内容");
+			}
+		}catch(Exception e){
+			throw new IllegalStateException(e);
 		}
-		con.close();
-		stmt.close();
+		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
+		if(con != null) try {con.close();}catch(SQLException ignore) {}
 		return choice;
 	}
 	
