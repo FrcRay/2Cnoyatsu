@@ -76,7 +76,7 @@ public class kkcBean implements Serializable{
 		Statement stmt = null;
 		ResultSet rs = null;
 		String option = "";
-		String sql = "SELECT outcomeOption"+ optionNumber +"FROM QI WHERE ";
+		String sql = "SELECT outcomeOption"+ optionNumber +" FROM QI WHERE questionCode = '%" + questionCode + "%'";
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
