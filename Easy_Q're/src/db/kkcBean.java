@@ -50,8 +50,6 @@ public class kkcBean implements Serializable{
 		}
 		
 		try {
-			con = getConnection();
-			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Q = rs.getString("アンケート内容");
