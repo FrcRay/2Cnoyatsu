@@ -52,30 +52,12 @@ public class SignBean implements Serializable{
 		this.statuscode = statuscode;
 	}
 	
-	//ユーザ情報テーブルを作成
-	public void createUITable() throws Exception{
-		String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
-		con = DriverManager.getConnection(url,"al21020","bond");
-		
-		String sql = "CREATE TABLE " + "UI"+ this.usercode + "("
-				+ "USERCODE varchar(5) primary key,"
-				+ "USERNAME varchar(10),"
-				+ "GENDER char(1),"
-				+ "BIRTHDAY char(10),"
-				+ "AGE int)";
-		Statement stmt = con.createStatement();
-		stmt.executeUpdate(sql);
-		
-		con.close();
-		stmt.close();
-	}
-	
 	//ユーザ情報をデータベースに登録
 	public void insertUserInfo() throws Exception{
 		String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 		con = DriverManager.getConnection(url,"al21020","bond");
 		
-		String sql = "INSERT INTO UI"+ this.usercode + " VALUES"
+		String sql = "INSERT INTO ui VALUES"
 				+ "('" + this.usercode + "','" + this.username + "','" + this.gender + "','" + this.birthday + "','" + this.age + "')";
 		
 		Statement stmt = con.createStatement();
@@ -86,30 +68,33 @@ public class SignBean implements Serializable{
 	}
 	
 	//ユーザコードが存在するか確認
-	public void selectUserCode(String uc) throws Exception{
+	public void selectUserCode() throws Exception{
 		String url = "jdbc:postgresql:tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 		con = DriverManager.getConnection(url,"al21020","bond");
 		Statement stmt = con.createStatement();
 		
-		String sql = "SELECT ID FROM UI" + uc + " WHERE ID = '" + uc + '\'';
+		String sql = "SELECT * FROM UI WHERE USERCODE = '" + this.usercode + '\'';
 		ResultSet rs = stmt .executeQuery(sql);
 		
 		//データ取得
-		String usercode = "";
 		while (rs.next()) {
-			usercode = rs.getString("USERCODE");
+			this.usercode = rs.getString("usercode");
+			this.username = rs.getString("username");
+			this.gender = rs.getString("gender");
+			this.birthday = rs.getString("birthday");
+			this.age = rs.getInt("age");
 		}
 		con.close();
 		stmt.close();
 	}
 	
 	//ユーザコードに結びついているユーザネームを取り出す
-	public String selectUserName(String uc) throws Exception{
+	public String selectUserName() throws Exception{
 		String url = "jdbc:postgresql:tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 		con = DriverManager.getConnection(url,"al21020","bond");
 		Statement stmt = con.createStatement();
 		
-		String sql = "SELECT USERNAME FROM USERINFO WHERE ID='" + uc + '\'';
+		String sql = "SELECT USERNAME FROM USERINFO WHERE ID='" + this.usercode+ '\'';
 		ResultSet rs = stmt .executeQuery(sql);
 		//データ取得
 		String username = "";
