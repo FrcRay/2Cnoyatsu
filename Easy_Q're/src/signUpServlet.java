@@ -69,11 +69,11 @@ public class signUpServlet extends HttpServlet{
 		SB.setGender(gender);
 		SB.setBirthday(birthday);
 		SB.setAge(age);
-		//テーブルを作成
+		
+		//dockerのlogに残す
+		//getServletContext().log(SB.getUsername()+","+SB.getUsercode()+","+SB.getBirthday()+","+SB.getGender()+","+SB.getAge());
 		try {
-			SB.createUITable();
 			SB.insertUserInfo();
-			
 			//JSPに情報を渡す
 			request.setAttribute("SB", SB);
 			String url="/home.jsp";
