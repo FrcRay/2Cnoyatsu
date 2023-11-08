@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
 public class kkcBean implements Serializable{
 	
@@ -25,11 +26,29 @@ public class kkcBean implements Serializable{
 	}
 	
 	public String getQuestion(){
+		Random rand = new Random();
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
+		int MAX = 0;
+		int QN =0;
 		String Q = "";
-		String sql = null;
+		String sqlM = "";	
+		String sql = "";
+		
+		//最大のアンケートコードを取得してそれ以下のアンケートコードをQNに格納
+		try {
+			con = getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sqlM);
+			while (rs.next()) {
+				MAX = rs.getInt("アンケートコード");
+			}
+			QN = rand.nextInt(MAX);
+		}catch(Exception e){
+			throw new IllegalStateException(e);
+		}
+		
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
@@ -39,7 +58,8 @@ public class kkcBean implements Serializable{
 			}
 		}catch(Exception e){
 			throw new IllegalStateException(e);
-		}	
+		}
+		
 		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
 		if(con != null) try {con.close();}catch(SQLException ignore) {}
 		return Q;
@@ -50,7 +70,7 @@ public class kkcBean implements Serializable{
 		Statement stmt = null;
 		ResultSet rs = null;
 		String choice = "";
-		String sql = null;
+		String sql = "";
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
