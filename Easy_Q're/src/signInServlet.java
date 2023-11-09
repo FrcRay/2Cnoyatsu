@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db.SignBean;
 
@@ -24,11 +25,25 @@ public class signInServlet extends HttpServlet{
 	try {
 		//setterでhome.jspに渡すためのIDをBeanに渡す
 		SB.setUsercode(uc);
-		//データベースにユーザコードがある場合
+		//データベースのユーザネームを探す
 		String un = SB.selectUserName();
-		SB.setUsername(un);
+		//無い場合
+		if(un.equals(""))throw new Exception();
+		
+		// セッションを作成
+		HttpSession session = request.getSession();
+		// セッションを無効化
+		session.invalidate();
+		// 新たなセッションを作成
+		session = request.getSession();
+		// セッションにユーザコードを保存
+		session.setAttribute("usercode", uc);
+		session.setAttribute("username", un);
+		// セッションの有効期間を設定（60分）
+		session.setMaxInactiveInterval(60 * 60);
+
 		//JSPに情報を渡す
-		request.setAttribute("SB", SB);
+		//request.setAttribute("SB", SB);
 		String url="/home.jsp";
 		RequestDispatcher dispatcher
 			=getServletContext().getRequestDispatcher(url);

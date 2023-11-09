@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db.SignBean;
 
@@ -41,16 +42,36 @@ public class createServlet2 extends HttpServlet {
 		SB.setOutcomeoption1(0);
 		SB.setOutcomeoption2(0);
 		//getServletContext().log(SB.getOption3()+","+SB.getQuestion());
-		
-		
 		try {
 			//現時点の最大のアンケートコードを取り出す
 			qc = SB.selectQreCode();
-			//getServletContext().log(String.valueOf("------"+qc+"------"));
 			qc++;
 		} catch (Exception e) {
 			qc = 0;
 		}
+		
+		//セッションからユーザコードを取得
+		HttpSession session = request.getSession();
+		int uc = (int) session.getAttribute("usercode");
+		
+		//QUCODEテーブルに挿入するデータをbeanに渡す
+		SB.setQuestioncode(qc);
+		SB.setUsercode(uc);
+		SB.setAlmade(true);
+		SB.setAlanswer(false);
+		SB.setNumanswer(0);
+		
+		try {
+			SB.insertQUcode();
+		} catch (Exception e1) {
+			int code = 1;
+			SB.setStatuscode(code);
+			request.setAttribute("SB", SB);
+			String url = "/response2.jsp";
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+			dispatcher.forward(request, response);
+		}
+		
 		//getServletContext().log(String.valueOf("------"+qc+"------"));
 		//アンケートコードをbeanに渡す
 		SB.setQuestioncode(qc);

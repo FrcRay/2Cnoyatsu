@@ -14,7 +14,7 @@ public class SignBean implements Serializable {
 	private String birthday = "";
 	private int age;
 	private int statuscode;
-	
+
 	private int questioncode;
 	private String question = "";
 	private String option1 = "";
@@ -23,6 +23,10 @@ public class SignBean implements Serializable {
 	private int outcomeoption1;
 	private int outcomeoption2;
 	private int outcomeoption3;
+	
+	private boolean almade;
+	private boolean alanswer;
+	private int numanswer;
 
 	public int getUsercode() {
 		return usercode;
@@ -71,69 +75,93 @@ public class SignBean implements Serializable {
 	public void setStatuscode(int statuscode) {
 		this.statuscode = statuscode;
 	}
-	
+
 	public int getQuestioncode() {
 		return this.questioncode;
 	}
-	
+
 	public void setQuestioncode(int questioncode) {
 		this.questioncode = questioncode;
 	}
-	
+
 	public String getQuestion() {
 		return this.question;
 	}
-	
+
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	
+
 	public String getOption1() {
 		return this.option1;
 	}
-	
+
 	public void setOption1(String option1) {
 		this.option1 = option1;
 	}
-	
+
 	public String getOption2() {
 		return this.option2;
 	}
-	
+
 	public void setOption2(String option2) {
 		this.option2 = option2;
 	}
-	
+
 	public String getOption3() {
 		return this.option3;
 	}
-	
+
 	public void setOption3(String option3) {
 		this.option3 = option3;
 	}
-	
+
 	public int getOutcomeoption1() {
 		return this.outcomeoption1;
 	}
-	
+
 	public void setOutcomeoption1(int outcomeoption1) {
 		this.outcomeoption1 = outcomeoption1;
 	}
-	
+
 	public int getOutcomeoption2() {
 		return this.outcomeoption2;
 	}
-	
+
 	public void setOutcomeoption2(int outcomeoption2) {
 		this.outcomeoption2 = outcomeoption2;
 	}
-	
+
 	public int getOutcomeoption3() {
 		return this.outcomeoption3;
 	}
-	
+
 	public void setOutcomeoption3(int outcomeoption3) {
 		this.outcomeoption3 = outcomeoption3;
+	}
+	
+	public boolean getAlmade() {
+		return this.almade;
+	}
+	
+	public void setAlmade(boolean almade) {
+		this.almade = almade;
+	}
+	
+	public boolean getAlanswer() {
+		return this.alanswer;
+	}
+	
+	public void setAlanswer(boolean alanswer) {
+		this.alanswer = alanswer;
+	}
+	
+	public int getNumanswer() {
+		return this.numanswer;
+	}
+	
+	public void setNumanswer(int numanswer) {
+		this.numanswer = numanswer;
 	}
 
 	//ユーザ情報をデータベースに登録
@@ -195,7 +223,24 @@ public class SignBean implements Serializable {
 
 		String sql = "INSERT INTO qi VALUES"
 				+ "('" + this.questioncode + "','" + this.question + "','" + this.option1 + "','" + this.option2 + "','"
-				+ this.option3 + "','" + this.outcomeoption1 + "','" + this.outcomeoption2 + "','" + this.outcomeoption3 + "')";
+				+ this.option3 + "','" + this.outcomeoption1 + "','" + this.outcomeoption2 + "','" + this.outcomeoption3
+				+ "')";
+
+		Statement stmt = con.createStatement();
+		stmt.executeUpdate(sql);
+
+		stmt.close();
+		con.close();
+	}
+
+	//アンケート作成情報を登録
+	public void insertQUcode() throws Exception {
+		String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
+		con = DriverManager.getConnection(url, "al21020", "bond");
+
+		String sql = "INSERT INTO qucode VALUES"
+				+ "('" + this.questioncode + "','" + this.usercode + "','" + this.almade + "','" + this.alanswer + "','"
+				+ this.numanswer + "')";
 
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(sql);
