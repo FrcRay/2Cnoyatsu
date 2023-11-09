@@ -44,27 +44,31 @@ public class createServlet2 extends HttpServlet {
 		
 		
 		try {
-			//アンケートコードを取り出す
+			//現時点の最大のアンケートコードを取り出す
 			qc = SB.selectQreCode();
-			//getServletContext().log(String.valueOf(qc));
+			//getServletContext().log(String.valueOf("------"+qc+"------"));
 			qc++;
 		} catch (Exception e) {
 			qc = 0;
 		}
+		//getServletContext().log(String.valueOf("------"+qc+"------"));
 		//アンケートコードをbeanに渡す
 		SB.setQuestioncode(qc);
 		try {
+			//アンケート内容をデータベースに登録
 			SB.insertQreInfo();
 			
+			int code = 0;
+			SB.setStatuscode(code);
 			request.setAttribute("SB", SB);
-			String url = "/home.jsp";
+			String url = "/response2.jsp";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
-			int code = 3;
+			int code = 1;
 			SB.setStatuscode(code);
 			request.setAttribute("SB", SB);
-			String url = "/response.jsp";
+			String url = "/response2.jsp";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 		}

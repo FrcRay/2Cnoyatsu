@@ -82,7 +82,7 @@ public class signUpServlet extends HttpServlet{
 			dispatcher.forward(request, response);
 		}catch(Exception e) {
 			//ユーザ作成失敗
-			int statuscode = 2;
+			int statuscode = 1;
 			SB.setStatuscode(statuscode);
 			request.setAttribute("SB", SB);
 			String url="/response.jsp";

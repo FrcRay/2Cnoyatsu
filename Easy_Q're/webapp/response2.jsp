@@ -11,16 +11,16 @@
 	int sc = (int) SB.getStatuscode();
 	String mess = "";
 	if(sc == 0){
-		mess = "ユーザコードがデータベース上に見つかりませんでした。";
+		mess = "アンケート作成に成功しました。";
 	}else if(sc == 1){
-		mess = "ユーザ作成に失敗しました。";
+		mess = "アンケート作成に失敗しました。";
 	}
 %>
 <h1><%= mess %></h1>
 	<br>
 	<br>
-	<FORM method="GET" action="http://localhost:8080/Easy_Q're/sign.html" class = "bottombt">
-			<input type="submit" value="サインイン・サインアップページに戻る">
+	<FORM method="GET" action="http://localhost:8080/Easy_Q're/home.jsp" class = "bottombt">
+			<input type="submit" value="ホームに戻る">
 	</FORM>
 </body>
 </html>

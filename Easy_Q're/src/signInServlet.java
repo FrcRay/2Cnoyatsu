@@ -35,7 +35,7 @@ public class signInServlet extends HttpServlet{
 		dispatcher.forward(request, response);
 	}catch(Exception e) {
 		//ユーザコードが見つからないエラー
-		int statuscode = 1;
+		int statuscode = 0;
 		SB.setStatuscode(statuscode);
 		request.setAttribute("SB", SB);
 		String url="/response.jsp";

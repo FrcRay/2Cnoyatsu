@@ -176,12 +176,12 @@ public class SignBean implements Serializable {
 		con = DriverManager.getConnection(url, "al21020", "bond");
 		Statement stmt = con.createStatement();
 
-		String sql = "SELECT MAX questionCode FROM QI";
+		String sql = "SELECT MAX(questionCode) FROM QI";
 		ResultSet rs = stmt.executeQuery(sql);
 		//データ取得
 		int qc = 0;
 		while (rs.next()) {
-			qc = rs.getInt("questionCode");
+			qc = rs.getInt("MAX");
 		}
 		con.close();
 		stmt.close();
