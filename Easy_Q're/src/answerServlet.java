@@ -13,6 +13,12 @@ public class answerServlet extends HttpServlet {
                       HttpServletResponse response)
         throws IOException, ServletException
     {
+    	try {
+    		//JDBCドライバのロード
+    		Class.forName("org.postgresql.Driver");
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
 		//JSPのURL
 		String url="/answer.jsp";
 		RequestDispatcher dispatcher

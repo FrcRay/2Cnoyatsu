@@ -15,7 +15,7 @@ public class answerServlet2 extends HttpServlet {
                       HttpServletResponse response)
         throws IOException, ServletException
     {
-    	String c = request.getParameter("1");
+    	String c = request.getParameter("choice");
     	
     	kkcBean kB = new kkcBean();
     	try {

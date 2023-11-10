@@ -11,34 +11,24 @@ import java.util.Random;
 public class kkcBean implements Serializable{
 	
 	private static String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
-	private static String user = "al21016";
+	private static String user = "al21020";
 	private static String pass = "bond";
 	
 	
-	public static Connection getConnection(){
-		try {
-			Connection con = null;
-			con = DriverManager.getConnection(url, user ,pass);
-			return con;
-		}catch(Exception e) {
-			throw new IllegalStateException(e);
-		}
-	}
-	
-	public int getQuestinCode() {
+	public int getQuestionCode() {
 		Random rand = new Random();
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		int MAX = 0;
 		int questionCode = 0;
-		String sql = "SELECT MAX questionCode FROM QI";
+		String sql = "SELECT MAX(questionCode) FROM QI";
 		try {
-			con = getConnection();
+			con = DriverManager.getConnection(url, user ,pass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				MAX = rs.getInt("questionCode");
+				MAX = rs.getInt("MAX");
 			}
 			questionCode = rand.nextInt(MAX + 1);
 		}catch(Exception e){
@@ -54,9 +44,9 @@ public class kkcBean implements Serializable{
 		Statement stmt = null;
 		ResultSet rs = null;
 		String question = "";
-		String sql = "SELECT question FROM QI WHERE questionCode = '%" + questionCode + "%'";
+		String sql = "SELECT question FROM QI WHERE questionCode = '" + questionCode + "'";
 		try {
-			con = getConnection();
+			con = DriverManager.getConnection(url, user ,pass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -76,9 +66,9 @@ public class kkcBean implements Serializable{
 		Statement stmt = null;
 		ResultSet rs = null;
 		String option = "";
-		String sql = "SELECT outcomeOption"+ optionNumber +" FROM QI WHERE questionCode = '%" + questionCode + "%'";
+		String sql = "SELECT outcomeOption"+ optionNumber +" FROM QI WHERE questionCode = '" + questionCode + "'";
 		try {
-			con = getConnection();
+			con = DriverManager.getConnection(url, user ,pass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
