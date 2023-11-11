@@ -21,6 +21,7 @@ public class resultServlet2 extends HttpServlet {
     	String test="OK!";
     	List<Integer> outcome = new ArrayList<>();
     	List<Integer> numanswer = new ArrayList<>();
+    	List<String> question = new ArrayList<>();
     	
     	mrtBean MB = new mrtBean();
     	MB.set_questionCode(questionCode);
@@ -34,8 +35,17 @@ public class resultServlet2 extends HttpServlet {
     	outcome=MB.get_outcome();
     	numanswer=MB.get_numanswer();
     	
+    	try {
+			MB.QI();
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+    	question=MB.get_question();
+    	
     	request.setAttribute("outcome", outcome);
     	request.setAttribute("numanswer", numanswer);
+    	request.setAttribute("question", question);
     	request.setAttribute("questionCode",questionCode);
     	request.setAttribute("test", test);
     	

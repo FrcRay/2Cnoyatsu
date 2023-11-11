@@ -19,8 +19,8 @@ public class resultServlet extends HttpServlet {
     {
     	//検索ワードをresult.jspから取得
     	String q_serchbox = request.getParameter("q_serchbox");
-    	List<Integer> questionCode = new ArrayList<>();
-    	List<String> question = new ArrayList<>();
+    	List<Integer> questionCodeList = new ArrayList<>();
+    	List<String> questionList = new ArrayList<>();
     	
     	try {
     		Class.forName("org.postgresql.Driver");
@@ -47,11 +47,11 @@ public class resultServlet extends HttpServlet {
     		}catch(Exception e) {
     			e.printStackTrace();
     		}
-			questionCode = MB.get_questionCode();
-			question = MB.get_question();
+			questionCodeList = MB.get_questionCodeList();
+			questionList = MB.get_questionList();
     	}
-    	request.setAttribute("questionCode", questionCode);
-    	request.setAttribute("question", question);
+    	request.setAttribute("questionCodeList", questionCodeList);
+    	request.setAttribute("questionList", questionList);
     	
 		//JSPのURL
 		String url="/result.jsp";

@@ -13,13 +13,15 @@ public class mrtBean implements Serializable{
 	static Connection con;
 	private String q_serchbox = "";
 	//selectQ
-	private List<Integer> questionCode = new ArrayList<>();
-	private List<String> question = new ArrayList<>();
+	private List<Integer> questionCodeList = new ArrayList<>();
+	private List<String> questionList = new ArrayList<>();
 	private List<String> question2 = new ArrayList<>();
-	//Q
+	//QUCODE
 	private int qc;
 	private List<Integer> outcome = new ArrayList<>();
 	private List<Integer> numanswer = new ArrayList<>();
+	//QI
+	private List<String> question = new ArrayList<>();
 	
 	private static String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 	private static String user = "al21020";
@@ -29,12 +31,12 @@ public class mrtBean implements Serializable{
 		this.q_serchbox=w;
 	}
 	
-	public List<Integer> get_questionCode(){
-		return this.questionCode;
+	public List<Integer> get_questionCodeList(){
+		return this.questionCodeList;
 	}
 	
-	public List<String> get_question(){
-		return this.question;
+	public List<String> get_questionList(){
+		return this.questionList;
 	}
 	
 	public List<String> get_question2(){
@@ -52,6 +54,9 @@ public class mrtBean implements Serializable{
 	public List<Integer> get_numanswer(){
 		return this.numanswer;
 	}
+	public List<String> get_question(){
+		return this.question;
+	}
 	//q_serchboxから一致する名前のアンケートのコードと質問文を取得する
 	public void selectQ() throws Exception{
 		con = DriverManager.getConnection(url,user,pass);
@@ -66,8 +71,8 @@ public class mrtBean implements Serializable{
 			qCL.add(rs.getInt("questioncode"));
 			qL.add(rs.getString("question"));
 		}
-		this.questionCode = qCL;
-		this.question = qL;
+		this.questionCodeList = qCL;
+		this.questionList = qL;
 		con.close();
 		stmt.close();
 	}
@@ -104,6 +109,25 @@ public class mrtBean implements Serializable{
 		}
 		this.numanswer = na;
 		this.outcome = oc;
+		con.close();
+		stmt.close();
+	}
+	//questionCodeからすべてを取り出す
+	public void QI() throws Exception{
+		con = DriverManager.getConnection(url,user,pass);
+		Statement stmt = con.createStatement();
+		String sql = "SELECT question, option1, option2, option3 FROM QI WHERE questioncode='"+ this.qc +"'";
+		ResultSet rs = stmt .executeQuery(sql);
+		//List用意
+		List<String> q = new ArrayList<>();
+		//データ取得
+		while (rs.next()) {
+			q.add(rs.getString("question"));
+			q.add(rs.getString("option1"));
+			q.add(rs.getString("option2"));
+			q.add(rs.getString("option3"));
+		};
+		this.question = q;
 		con.close();
 		stmt.close();
 	}

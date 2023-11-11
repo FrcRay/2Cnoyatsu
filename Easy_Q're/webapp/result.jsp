@@ -15,8 +15,8 @@
 	
 	<%@ page import="java.util.List" %>
 	<% 
- 		List<String> questionList = (List<String>) request.getAttribute("question");
-		List<Integer> questionCodeList = (List<Integer>) request.getAttribute("questionCode");
+ 		List<String> questionList = (List<String>) request.getAttribute("questionList");
+		List<Integer> questionCodeList = (List<Integer>) request.getAttribute("questionCodeList");
 		for(int i=0; i< questionList.size(); i++){
 			String question = questionList.get(i);
 			int questionCode = questionCodeList.get(i);
