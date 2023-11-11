@@ -10,7 +10,33 @@
 	
 	<h3> 選択したアンケート</h3>
 	
-	<FORM method="GET" action="http://localhost:8080/Easy_Q're/result.jsp" class = "bottombt">
+	<%@ page import="java.util.List" %>
+	<% 
+ 		List<Integer> outcomeList = (List<Integer>) request.getAttribute("outcome");
+		List<Integer> numanswerList = (List<Integer>) request.getAttribute("numanswer");
+		String test = (String)request.getAttribute("test");
+		if(outcomeList!=null){
+			for(int i=0; i< numanswerList.size(); i++){
+				int numanswer = numanswerList.get(i);
+				int outcome = outcomeList.get(i);
+	%>
+				<%= numanswer %>　<%= outcome %><br>
+	<%
+			}
+		}else{
+	%>
+			List is null!
+	<%
+		}
+	%>
+	<br>
+	<% int t = Integer.parseInt(request.getParameter("questionCode")); %>
+		questionCode is 
+	<%= t %>
+	<br>
+	<%= test %>
+	
+	<FORM method="GET" action="../result/" class = "bottombt">
 		<input type="submit" value="戻る">
 	</FORM>
 	

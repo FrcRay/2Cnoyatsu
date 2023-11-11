@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"" %>
 
 <html>
 <head>
@@ -9,25 +8,46 @@
 </head>
 <body bgcolor="#FFFFFF">
 <H1>アンケート結果</H1>
-	<form action="<%= request.getContextPath() %>/result.jsp" method="post" name="q_serchbox">
-		<input type= "search" placeholder="アンケート名" >
+	<form action="../result/" method="GET">
+		<input type= "search" name="q_serchbox" placeholder="アンケート名" >
 		<input type="submit" value="検索">
 	</form> 
 	
-	<h3> 最近投稿されたアンケート</h3>
+	<%@ page import="java.util.List" %>
+	<% 
+ 		List<String> questionList = (List<String>) request.getAttribute("question");
+		List<Integer> questionCodeList = (List<Integer>) request.getAttribute("questionCode");
+		for(int i=0; i< questionList.size(); i++){
+			String question = questionList.get(i);
+			int questionCode = questionCodeList.get(i);
+	%>
+			<form action="../result2/" method="GET">
+				<%= question %>
+				<input type="hidden" name="questionCode" value="<%= questionCode %>">
+				<input type="submit" value="選択">
+			</form>
+	<%
+		}
+	%>
 	
-	<ul>
-    	<c:forEach items="${question}" var="q">
-        	<li>${q}</li>
-    	</c:forEach>
-	</ul>
-	
+	<!--
 	<input type="submit" value="<-">
 	<input type="submit" value="->">
+	 <%
+		int uc = (int) session.getAttribute("usercode");
+		String un = (String) session.getAttribute("username");
+	%>
+	
+	<FORM method="GET" action="../signIn/" class = "bottombt">
+		<input type="hidden" value="<%= uc %>">
+		<input type="hidden" value="<%= un %>">
+		<input type="submit" value="ホームに戻る">
+	</FORM> 
+	-->
 	
 	<FORM method="GET" action="http://localhost:8080/Easy_Q're/home.jsp" class = "bottombt">
 		<input type="submit" value="ホームに戻る">
 	</FORM>
 </body>
 
-</html>'
+</html>

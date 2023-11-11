@@ -30,16 +30,26 @@ public class resultServlet extends HttpServlet {
     	//mrtBeanのコンストラクタ
     	mrtBean MB = new mrtBean();
     	
-    	//アンケコードとアンケ文の取得
-    	try {
+    	//q_serchboxに何も入っていないなら
+    	if(q_serchbox==null) {
+    		try {
+				MB.selectQ2();
+			} catch (Exception e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+    		MB.get_question2();
+    	}else {
     		MB.setQ_serchbox(q_serchbox);
-    		MB.selectQ();
-    		questionCode = MB.get_questionCode();
-    		question = MB.get_question();
-    	}catch(Exception e) {
-    		e.printStackTrace();
+    		//アンケコードとアンケ文の取得
+    		try {
+    			MB.selectQ();
+    		}catch(Exception e) {
+    			e.printStackTrace();
+    		}
+			questionCode = MB.get_questionCode();
+			question = MB.get_question();
     	}
-    	
     	request.setAttribute("questionCode", questionCode);
     	request.setAttribute("question", question);
     	
