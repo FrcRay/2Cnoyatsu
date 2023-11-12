@@ -15,28 +15,44 @@ public class kkcBean implements Serializable{
 	private static String pass = "bond";
 	
 	
-	public int getQuestionCode() {
+	public int getQuestionCode(int userCode) {
 		Random rand = new Random();
 		Connection con = null;
 		Statement stmt = null;
-		ResultSet rs = null;
+		ResultSet MaxRs = null;
+		ResultSet flgRs = null;
 		int MAX = 0;
 		int questionCode = 0;
-		String sql = "SELECT MAX(questionCode) FROM QI";
+		String MaxSql = "SELECT MAX(questionCode) FROM QI";
+		String SelectSql = "";
 		try {
 			con = DriverManager.getConnection(url, user ,pass);
 			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
-			while (rs.next()) {
-				MAX = rs.getInt("MAX");
+			MaxRs = stmt.executeQuery(MaxSql);
+			while (MaxRs.next()) {
+				MAX = MaxRs.getInt("MAX");
 			}
-			questionCode = rand.nextInt(MAX + 1);
 		}catch(Exception e){
 			throw new IllegalStateException(e);
 		}
+		for(int i=0;i <= MAX;i++) {
+			questionCode = rand.nextInt(MAX + 1);
+			SelectSql = "SELECT alMade FROM QUCODE WHERE questionCode = '"+ questionCode +"' AND userCode = '"+ userCode +"'";
+			try {
+				flgRs = stmt.executeQuery(SelectSql);
+				if(flgRs.next()) {
+				}else {
+					if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
+					if(con != null) try {con.close();}catch(SQLException ignore) {}
+					return questionCode;
+				}
+			}catch(Exception e){
+				throw new IllegalStateException(e);
+			}
+		}
 		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
 		if(con != null) try {con.close();}catch(SQLException ignore) {}
-		return questionCode;
+		return -1;
 	}
 	
 	public String getQuestion(int questionCode){
@@ -82,23 +98,15 @@ public class kkcBean implements Serializable{
 		return option;
 	}
 	
-	public void selectOption(String option,int questionCode) {
+	public void selectOption(int userCode, int option, int questionCode) {
 		Connection con = null;
 		Statement stmt = null;
-		ResultSet rs = null;
-		int outcomeOption = 0;
-		String selectSql = "SELECT outcomeOption"+ option +"FROM QI WHERE questionCode = '" + questionCode + "'";
-		String updateSql = "";
+		boolean alMade = false;
+		String sql = "INSERT INTO QUCODE VALUES('"+ questionCode +"' , '"+ userCode +"' , '"+ alMade +"' , ' "+ option +"' )";
 		try {
 			con = DriverManager.getConnection(url, user ,pass);
 			stmt = con.createStatement();
-			rs = stmt.executeQuery(selectSql);
-			while (rs.next()) {
-				outcomeOption = rs.getInt("outcomeOption"+ option);
-			}
-			outcomeOption++;
-			updateSql = "UPDATE QI SET outcomeOption"+ option +" = "+ outcomeOption +"WHERE questionCode = '"+ questionCode +"'";
-			stmt.executeUpdate(updateSql);
+			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			throw new IllegalStateException(e);
 		}

@@ -223,8 +223,7 @@ public class SignBean implements Serializable {
 
 		String sql = "INSERT INTO qi VALUES"
 				+ "('" + this.questioncode + "','" + this.question + "','" + this.option1 + "','" + this.option2 + "','"
-				+ this.option3 + "','" + this.outcomeoption1 + "','" + this.outcomeoption2 + "','" + this.outcomeoption3
-				+ "')";
+				+ this.option3 + "')";
 
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(sql);
@@ -239,8 +238,7 @@ public class SignBean implements Serializable {
 		con = DriverManager.getConnection(url, "al21020", "bond");
 
 		String sql = "INSERT INTO qucode VALUES"
-				+ "('" + this.questioncode + "','" + this.usercode + "','" + this.almade + "','" + this.alanswer + "','"
-				+ this.numanswer + "')";
+				+ "('" + this.questioncode + "','" + this.usercode + "','" + this.almade + "','" + this.numanswer + "')";
 
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(sql);

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import db.SignBean;
 import db.kkcBean;
 
 public class answerServlet extends HttpServlet {
@@ -25,10 +26,21 @@ public class answerServlet extends HttpServlet {
     	kkcBean kB = new kkcBean();
     	int questionCode = 0;
     	HttpSession session = request.getSession();
+    	int userCode = (int) session.getAttribute("usercode");
     	try {
-    	questionCode = (int) kB.getQuestionCode(); 
+    	questionCode = (int) kB.getQuestionCode(userCode); 
     	}catch(Exception e){
     		e.printStackTrace();
+    	}
+    	if(questionCode == -1) {
+    		SignBean SB = new SignBean();
+    		int statuscode = 2;
+    		SB.setStatuscode(statuscode);
+    		request.setAttribute("SB", SB);
+    		String url="/response2.jsp";
+    		RequestDispatcher dispatcher
+    			=getServletContext().getRequestDispatcher(url);
+    		dispatcher.forward(request, response);
     	}
 		session.setAttribute("questionCode", questionCode);
 		//JSPのURL

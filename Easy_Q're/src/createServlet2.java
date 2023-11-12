@@ -28,19 +28,15 @@ public class createServlet2 extends HttpServlet {
 		
 		//option3が入力されていたとき
 		if(!option3.equals(null)) {
-			SB.setOutcomeoption3(0);
 			SB.setOption3(option3);
-		//入力されていないときは0と空文字をset
+		//入力されていないときは空文字をset
 		}else {
-			SB.setOutcomeoption3(0);
 			SB.setOption3("");
 		}
 		
 		SB.setQuestion(question);
 		SB.setOption1(option1);
 		SB.setOption2(option2);
-		SB.setOutcomeoption1(0);
-		SB.setOutcomeoption2(0);
 		//getServletContext().log(SB.getOption3()+","+SB.getQuestion());
 		try {
 			//現時点の最大のアンケートコードを取り出す
@@ -58,7 +54,6 @@ public class createServlet2 extends HttpServlet {
 		SB.setQuestioncode(qc);
 		SB.setUsercode(uc);
 		SB.setAlmade(true);
-		SB.setAlanswer(false);
 		SB.setNumanswer(0);
 		
 		try {
