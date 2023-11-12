@@ -25,7 +25,7 @@
 		<FORM method="GET" action="http://localhost:8080/Easy_Q're/create.html">
 			<input type="submit" value="アンケート作成" size="50" class="inputs" />
 		</FORM>
-		<FORM method="GET" action="../result/">
+		<FORM method="GET" action="http://localhost:8080/Easy_Q're/servlet/result/">
 			<input type="submit" value="アンケート結果" size="50" class="inputs" />
 		</FORM>
 	</div>
