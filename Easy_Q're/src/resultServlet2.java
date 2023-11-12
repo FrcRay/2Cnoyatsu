@@ -18,9 +18,7 @@ public class resultServlet2 extends HttpServlet {
         throws IOException, ServletException
     {
     	int questionCode = Integer.parseInt(request.getParameter("questionCode"));
-    	String test="OK!";
     	List<Integer> outcome = new ArrayList<>();
-    	List<Integer> numanswer = new ArrayList<>();
     	List<String> question = new ArrayList<>();
     	
     	mrtBean MB = new mrtBean();
@@ -28,12 +26,9 @@ public class resultServlet2 extends HttpServlet {
     	try {
 			MB.QUCODE();
 		} catch (Exception e) {
-			// TODO 自動生成された catch ブロック
-			test = "error";
 			e.printStackTrace();
 		}
     	outcome=MB.get_outcome();
-    	numanswer=MB.get_numanswer();
     	
     	try {
 			MB.QI();
@@ -44,9 +39,7 @@ public class resultServlet2 extends HttpServlet {
     	question=MB.get_question();
     	
     	request.setAttribute("outcome", outcome);
-    	request.setAttribute("numanswer", numanswer);
     	request.setAttribute("question", question);
-    	request.setAttribute("test", test);
     	
 		//JSPのURL
 		String url="/result2.jsp";

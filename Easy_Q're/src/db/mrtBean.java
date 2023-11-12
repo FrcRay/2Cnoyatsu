@@ -51,9 +51,6 @@ public class mrtBean implements Serializable{
 		return this.outcome;
 	}
 	
-	public List<Integer> get_numanswer(){
-		return this.numanswer;
-	}
 	public List<String> get_question(){
 		return this.question;
 	}
@@ -96,18 +93,28 @@ public class mrtBean implements Serializable{
 	}
 	//そのアンケートを答えた人のuserCodeをカウントする。
 	public void QUCODE() throws Exception{
+		List<Integer> oc = new ArrayList<>();
 		con = DriverManager.getConnection(url,user,pass);
 		Statement stmt = con.createStatement();
-		String sql = "SELECT count(usercode) as ucc, numanswer FROM QUCODE GROUP BY numanswer HAVING questioncode='"+ this.qc +"' ORDER BY numanswer";
+		String sql = "SELECT count(usercode) as ucc FROM QUCODE where questioncode='"+ this.qc +"' and numanswer='1'";
 		ResultSet rs = stmt .executeQuery(sql);
 		//データ取得
-		List<Integer> na = new ArrayList<>();
-		List<Integer> oc = new ArrayList<>();
 		while (rs.next()) {
-			na.add(rs.getInt("numanswer"));
 			oc.add(rs.getInt("ucc"));
 		}
-		this.numanswer = na;
+		
+		sql = "SELECT count(usercode) as ucc FROM QUCODE where questioncode='"+ this.qc +"' and numanswer='2'";
+		rs = stmt .executeQuery(sql);
+		while (rs.next()) {
+			oc.add(rs.getInt("ucc"));
+		}
+		
+		sql = "SELECT count(usercode) as ucc FROM QUCODE where questioncode='"+ this.qc +"' and numanswer='3'";
+		rs = stmt .executeQuery(sql);
+		while (rs.next()) {
+			oc.add(rs.getInt("ucc"));
+		}
+		
 		this.outcome = oc;
 		con.close();
 		stmt.close();
