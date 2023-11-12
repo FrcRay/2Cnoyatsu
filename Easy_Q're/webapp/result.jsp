@@ -9,7 +9,7 @@
 <body bgcolor="#FFFFFF">
 <H1>アンケート結果</H1>
 	<form action="../result/" method="GET">
-		<input type= "search" name="q_serchbox" placeholder="アンケート名" >
+		<input type= "search" name="q_serchbox" placeholder="アンケート文の先頭(一部でも可)" >
 		<input type="submit" value="検索">
 	</form> 
 	
