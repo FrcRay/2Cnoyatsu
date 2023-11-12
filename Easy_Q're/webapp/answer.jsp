@@ -19,10 +19,10 @@
 		
 		<h3><%=question %></h3>
 		
-		<FORM method="GET" action="servlet/answer2/">
+		<FORM method="POST" action="servlet/answer2/">
 			<p><input type="submit" value= "<%=option1 %>" name = "1" ></p>
 			<p><input type="submit" value= "<%=option2 %>" name = "2"></p>
-			<%if(option3 != null){ %>
+			<%if(option3 != ""){ %>
 			<p><input type="submit" value= "<%=option3 %>" name = "3"></p>
 			<%} %>
 
