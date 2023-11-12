@@ -19,8 +19,8 @@ public class resultServlet extends HttpServlet {
     {
     	//検索ワードをresult.jspから取得
     	String q_serchbox = request.getParameter("q_serchbox");
-    	List<Integer> questionCode = new ArrayList<>();
-    	List<String> question = new ArrayList<>();
+    	List<Integer> questionCodeList = new ArrayList<>();
+    	List<String> questionList = new ArrayList<>();
     	
     	try {
     		Class.forName("org.postgresql.Driver");
@@ -30,18 +30,28 @@ public class resultServlet extends HttpServlet {
     	//mrtBeanのコンストラクタ
     	mrtBean MB = new mrtBean();
     	
-    	//アンケコードとアンケ文の取得
-    	try {
+    	//q_serchboxに何も入っていないなら
+    	if(q_serchbox==null) {
+    		try {
+				MB.selectQ2();
+			} catch (Exception e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+    		MB.get_question2();
+    	}else {
     		MB.setQ_serchbox(q_serchbox);
-    		MB.selectQ();
-    		questionCode = MB.get_questionCode();
-    		question = MB.get_question();
-    	}catch(Exception e) {
-    		e.printStackTrace();
+    		//アンケコードとアンケ文の取得
+    		try {
+    			MB.selectQ();
+    		}catch(Exception e) {
+    			e.printStackTrace();
+    		}
+			questionCodeList = MB.get_questionCodeList();
+			questionList = MB.get_questionList();
     	}
-    	
-    	request.setAttribute("questionCode", questionCode);
-    	request.setAttribute("question", question);
+    	request.setAttribute("questionCodeList", questionCodeList);
+    	request.setAttribute("questionList", questionList);
     	
 		//JSPのURL
 		String url="/result.jsp";
