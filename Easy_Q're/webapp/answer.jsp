@@ -13,16 +13,17 @@
 			String option1 = (String) kB.getOption("1", questionCode);
 			String option2 = (String) kB.getOption("2", questionCode);
 			String option3 = (String) kB.getOption("3", questionCode);
+			session.setAttribute("questionCode", questionCode);
 		%>
 		<h1>アンケート回答ページ</h1>
 		
 		<h3><%=question %></h3>
 		
-		<FORM method="GET" action="../../servlet/answer2/">
-			<p><input type="submit" value= "<%=option1 %>" name = "option" ></p>
-			<p><input type="submit" value= "<%=option2 %>" name = "option"></p>
+		<FORM method="GET" action="servlet/answer2/">
+			<p><input type="submit" value= "<%=option1 %>" name = "1" ></p>
+			<p><input type="submit" value= "<%=option2 %>" name = "2"></p>
 			<%if(option3 != null){ %>
-			<p><input type="submit" value= "<%=option3 %>" name = "option"></p>
+			<p><input type="submit" value= "<%=option3 %>" name = "3"></p>
 			<%} %>
 
 		</FORM>

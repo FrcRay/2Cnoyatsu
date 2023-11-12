@@ -1,10 +1,12 @@
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db.kkcBean;
 
@@ -15,11 +17,13 @@ public class answerServlet2 extends HttpServlet {
                       HttpServletResponse response)
         throws IOException, ServletException
     {
-    	String c = request.getParameter("choice");
+    	HttpSession session = request.getSession();
+    	int questionCode = (int) session.getAttribute("questionCode");
+    	Enumeration<String> selectedOption = request.getParameterNames();
     	
     	kkcBean kB = new kkcBean();
     	try {
-    		kB.insertChoice(c);
+    		kB.selectOption((selectedOption.nextElement().substring(0,1)), questionCode);
     	}catch(Exception e) {
     		e.printStackTrace();
     	}
