@@ -8,18 +8,17 @@
 	</head>
 	<body>
 		<%
-			int questionCode = (int) kB.getQuestionCode(); 
+			int questionCode = (int) session.getAttribute("questionCode");
 			String question = (String) kB.getQuestion(questionCode);
 			String option1 = (String) kB.getOption("1", questionCode);
 			String option2 = (String) kB.getOption("2", questionCode);
 			String option3 = (String) kB.getOption("3", questionCode);
-			session.setAttribute("questionCode", questionCode);
 		%>
 		<h1>アンケート回答ページ</h1>
 		
 		<h3><%=question %></h3>
 		
-		<FORM method="POST" action="servlet/answer2/">
+		<FORM method="GET" action="../answer2/">
 			<p><input type="submit" value= "<%=option1 %>" name = "1" ></p>
 			<p><input type="submit" value= "<%=option2 %>" name = "2"></p>
 			<%if(option3 != ""){ %>

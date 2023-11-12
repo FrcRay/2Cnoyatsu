@@ -19,7 +19,7 @@
 	<h1>
 		ログイン中のユーザコード：<%= uc%><br>ログイン中のユーザネーム：<%= un%></h1>
 	<div class="buttons">
-		<FORM method="GET" action="http://localhost:8080/Easy_Q're/answer.jsp">
+		<FORM method="GET" action="http://localhost:8080/Easy_Q're/servlet/answer/">
 			<input type="submit" value="アンケート回答" size="50" class="inputs" />
 		</FORM>
 		<FORM method="GET" action="http://localhost:8080/Easy_Q're/create.html">
