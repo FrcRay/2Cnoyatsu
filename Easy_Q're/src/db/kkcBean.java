@@ -38,11 +38,15 @@ public class kkcBean implements Serializable{
 		}
 		while(flg) {
 			questionCode = rand.nextInt(MAX + 1);
-			SelectSql = "SELECT FROM alMade WHERE questionCode = '"+ questionCode +"' AND userCode = '" + userCode +"'";
+			SelectSql = "SELECT alMade FROM QUCODE WHERE questionCode = '"+ questionCode +"' AND userCode = '"+ userCode +"'";
 			try {
 				flgRs = stmt.executeQuery(SelectSql);
+				if(flgRs.next()) {
+				}else {
+					flg = false;
+				}
 			}catch(Exception e){
-				flg = false;
+				throw new IllegalStateException(e);
 			}
 		}
 		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
