@@ -25,8 +25,9 @@ public class answerServlet extends HttpServlet {
     	kkcBean kB = new kkcBean();
     	int questionCode = 0;
     	HttpSession session = request.getSession();
+    	int userCode = (int) session.getAttribute("usercode");
     	try {
-    	questionCode = (int) kB.getQuestionCode(); 
+    	questionCode = (int) kB.getQuestionCode(userCode); 
     	}catch(Exception e){
     		e.printStackTrace();
     	}
