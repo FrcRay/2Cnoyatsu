@@ -38,7 +38,7 @@
   
    <servlet>
     <servlet-name>result2</servlet-name>
-    <servlet-class>result2Servlet</servlet-class>
+    <servlet-class>resultServlet2</servlet-class>
   </servlet>
   
   <servlet-mapping>
