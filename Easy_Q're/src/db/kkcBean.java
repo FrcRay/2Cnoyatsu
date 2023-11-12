@@ -23,7 +23,6 @@ public class kkcBean implements Serializable{
 		ResultSet flgRs = null;
 		int MAX = 0;
 		int questionCode = 0;
-		boolean flg = true;
 		String MaxSql = "SELECT MAX(questionCode) FROM QI";
 		String SelectSql = "";
 		try {
@@ -36,14 +35,16 @@ public class kkcBean implements Serializable{
 		}catch(Exception e){
 			throw new IllegalStateException(e);
 		}
-		while(flg) {
+		for(int i=0;i <= MAX;i++) {
 			questionCode = rand.nextInt(MAX + 1);
 			SelectSql = "SELECT alMade FROM QUCODE WHERE questionCode = '"+ questionCode +"' AND userCode = '"+ userCode +"'";
 			try {
 				flgRs = stmt.executeQuery(SelectSql);
 				if(flgRs.next()) {
 				}else {
-					flg = false;
+					if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
+					if(con != null) try {con.close();}catch(SQLException ignore) {}
+					return questionCode;
 				}
 			}catch(Exception e){
 				throw new IllegalStateException(e);
@@ -51,7 +52,7 @@ public class kkcBean implements Serializable{
 		}
 		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
 		if(con != null) try {con.close();}catch(SQLException ignore) {}
-		return questionCode;
+		return -1;
 	}
 	
 	public String getQuestion(int questionCode){
