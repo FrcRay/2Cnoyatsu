@@ -20,7 +20,6 @@ public class answerServlet2 extends HttpServlet {
     	HttpSession session = request.getSession();
     	int questionCode = (int) session.getAttribute("questionCode");
     	Enumeration<String> selectedOption = request.getParameterNames();
-    	
     	kkcBean kB = new kkcBean();
     	try {
     		kB.selectOption((selectedOption.nextElement().substring(0,1)), questionCode);

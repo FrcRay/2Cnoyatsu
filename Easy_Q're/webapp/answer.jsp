@@ -21,7 +21,7 @@
 		<FORM method="GET" action="../answer2/">
 			<p><input type="submit" value= "<%=option1 %>" name = "1" ></p>
 			<p><input type="submit" value= "<%=option2 %>" name = "2"></p>
-			<%if(option3 != ""){ %>
+			<%if(option3.equals("") == false){ %>
 			<p><input type="submit" value= "<%=option3 %>" name = "3"></p>
 			<%} %>
 

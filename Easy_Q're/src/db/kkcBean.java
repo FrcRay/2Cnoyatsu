@@ -87,7 +87,7 @@ public class kkcBean implements Serializable{
 		Statement stmt = null;
 		ResultSet rs = null;
 		int outcomeOption = 0;
-		String selectSql = "SELECT outcomeOption"+ option +"FROM QI WHERE questionCode = '" + questionCode + "'";
+		String selectSql = "SELECT outcomeOption"+ option +" FROM QI WHERE questionCode = '" + questionCode + "'";
 		String updateSql = "";
 		try {
 			con = DriverManager.getConnection(url, user ,pass);
