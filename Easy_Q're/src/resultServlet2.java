@@ -46,7 +46,6 @@ public class resultServlet2 extends HttpServlet {
     	request.setAttribute("outcome", outcome);
     	request.setAttribute("numanswer", numanswer);
     	request.setAttribute("question", question);
-    	request.setAttribute("questionCode",questionCode);
     	request.setAttribute("test", test);
     	
 		//JSPのURL

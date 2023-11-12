@@ -40,10 +40,6 @@
 		}
 	%>
 	<br>
-	<% int t = Integer.parseInt(request.getParameter("questionCode")); %>
-		questionCode is 
-	<%= t %>
-	<br>
 	<%= test %>
 	
 	<FORM method="GET" action="../result/" class = "bottombt">
