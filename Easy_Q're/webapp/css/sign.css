@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+body {
+	background-color: #FFFFFF;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+h3 {
+	font-size: 25px;
+}
+
+h4 {
+	font-size: 20px;
+}
+
+input[type="number"] {
+	width: 200px;
+	padding: 5px;
+	margin-bottom: 15px;
+	box-sizing: border-box;
+}
+
+input[type="submit"] {
+	width: 150px;
+	padding: 10px;
+	background-color: rgb(128, 128, 255);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}

@@ -15,14 +15,14 @@
 	}else if(sc == 1){
 		mess = "アンケート作成に失敗しました。";
 	}else if(sc == 2){
-		mess = "全てのアンケートに回答してるにゅ";
+		mess = "回答しています。全てのアンケートに";
 	}
 %>
 <h1><%= mess %></h1>
 	<br>
 	<br>
 	<FORM method="GET" action="http://localhost:8080/Easy_Q're/home.jsp" class = "bottombt">
-			<input type="submit" value="ホームに戻る">
+			<input type="submit" value="ホームに戻る" style="background-color:#f0908d; width: 255px;">
 	</FORM>
 </body>
 </html>

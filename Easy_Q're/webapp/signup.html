@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="http://localhost:8080/Easy_Q're/css/home.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/Easy_Q're/css/signup.css">
 	<title>サインアップページ</title>
 	<h1>新規ユーザ作成</h1>
 
@@ -11,9 +11,9 @@
 <div class = "sign">
 	<FORM method="GET" action="servlet/signUp/">
 		<h3>ユーザコード入力欄</h3>
-		<h4>任意のユーザコードを数字5文字で入力してください</h4>
+		<h4>任意のユーザコードを正の数字で入力してください</h4>
 		<input type="number" name = "uc" required maxlength="5"/>
-		<h4>任意のユーザネームを10以内文字で入力してください</h4>
+		<h4>任意のユーザネームを10文字以内で入力してください</h4>
 		<input type="text" name = "un" required maxlength="10"/>
 		<h4>性別を選択してください</h4>
 		<div>
@@ -30,7 +30,7 @@
 	</FORM>
 </div>
 	<FORM method="GET" action="http://localhost:8080/Easy_Q're/sign.html" class = "bottombt">
-			<input type="submit" value="サインイン・サインアップページに戻る" style="background-color:#f0908d;">
+			<input type="submit" value="サインイン・サインアップページに戻る" style="background-color:#f0908d; width: 255px;">
 	</FORM>
 </body>
 </html>

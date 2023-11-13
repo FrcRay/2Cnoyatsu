@@ -18,8 +18,8 @@ h1 {
 .tarea {
 	resize: none;
   	text-align: left;
-  	width: 100vh; /* テキストエリアの幅を調整 */
- 	height: 20vh; /* テキストエリアの高さを調整 */
+  	width: 100vh;
+ 	height: 20vh;
  	font-size: 18px;
 }
 
@@ -30,23 +30,33 @@ label {
 
 .bottombt {
 	display: inline-block;
-    margin-right: 5px; /* ボタン間の間隔を調整 (必要に応じて) */
+    margin-right: 5px;
 }
 
 .bottombtpo {
   	text-align: center;
- 	margin-top: 20px; /* ボタンとテキストエリアの間隔を調整 (必要に応じて) */
+ 	margin-top: 20px;
 }
 .option{
 	resize: none;
 	text-align: left;
 	display: inline-block;
-	width: 60vh; /* テキストエリアの幅を調整 */
- 	height: 10vh; /* テキストエリアの高さを調整 */
+	width: 60vh;
+ 	height: 10vh;
  	font-size: 18px;
 }
 .options {
 	display: flex;
     justify-content:space-around;
     align-items: center;
+}
+
+input[type="submit"] {
+	width: 200px;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: rgb(255, 128, 192);
+	margin-top: 10px;
 }
