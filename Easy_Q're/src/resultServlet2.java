@@ -20,7 +20,8 @@ public class resultServlet2 extends HttpServlet {
     	int questionCode = Integer.parseInt(request.getParameter("questionCode"));
     	List<Integer> outcome = new ArrayList<>();
     	List<String> question = new ArrayList<>();
-    	
+    	List<List<Integer>> Gender = new ArrayList<>();
+    	List<List<Integer>> Age = new ArrayList<>();	
     	mrtBean MB = new mrtBean();
     	MB.set_questionCode(questionCode);
     	try {
@@ -38,8 +39,19 @@ public class resultServlet2 extends HttpServlet {
 		}
     	question=MB.get_question();
     	
+    	try {
+			MB.UI_QUCODE();
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+    	Gender=MB.get_Gender();
+    	Age=MB.get_Age();
+    	
     	request.setAttribute("outcome", outcome);
     	request.setAttribute("question", question);
+    	request.setAttribute("Gender", Gender);
+    	request.setAttribute("Age", Age);
     	
 		//JSPのURL
 		String url="/result2.jsp";

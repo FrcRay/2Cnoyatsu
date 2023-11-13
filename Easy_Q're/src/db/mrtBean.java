@@ -19,9 +19,11 @@ public class mrtBean implements Serializable{
 	//QUCODE
 	private int qc;
 	private List<Integer> outcome = new ArrayList<>();
-	private List<Integer> numanswer = new ArrayList<>();
 	//QI
 	private List<String> question = new ArrayList<>();
+	//UI_QUCOD
+	private List<List<Integer>> Gender = new ArrayList<>();
+	private List<List<Integer>> Age = new ArrayList<>();
 	
 	private static String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 	private static String user = "al21020";
@@ -54,6 +56,15 @@ public class mrtBean implements Serializable{
 	public List<String> get_question(){
 		return this.question;
 	}
+	
+	public List<List<Integer>> get_Gender(){
+		return this.Gender;
+	}
+	
+	public List<List<Integer>> get_Age(){
+		return this.Age;
+	}
+	
 	//q_serchboxから一致する名前のアンケートのコードと質問文を取得する
 	public void selectQ() throws Exception{
 		con = DriverManager.getConnection(url,user,pass);
@@ -119,6 +130,137 @@ public class mrtBean implements Serializable{
 		con.close();
 		stmt.close();
 	}
+	//UIとQUCODEを結合させてquestionCodeからgender,ageをそれぞれ条件を絞って取り出す。
+	public void UI_QUCODE() throws Exception{
+		List<List<Integer>> Gender = new ArrayList<>();
+		List<List<Integer>> Age = new ArrayList<>();
+		con = DriverManager.getConnection(url,user,pass);
+		Statement stmt = con.createStatement();
+		//gender
+		for(int i=1; i<=3; i++) {
+			List<Integer> a = new ArrayList<>();
+			String sql = "SELECT count(A.usercode) as mnum FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and B.numanswer='"+ i +"' and A.gender='m' and A.usercode=B.usercode";
+			ResultSet rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("mnum"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+		
+			sql = "SELECT count(A.usercode) as fnum FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and B.numanswer='"+ i +"' and A.gender='f' and A.usercode=B.usercode";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("fnum"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			Gender.add(a);
+		}
+		this.Gender = Gender;
+		
+		//age
+		for(int i=1; i<=3; i++) {
+			List<Integer> a = new ArrayList<>();
+			String sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 0 AND 10 ";
+			ResultSet rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+		
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 10 AND 20 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 20 AND 30 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 30 AND 40 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 40 AND 50 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 50 AND 60 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 60 AND 70 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 70 AND 80 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 80 AND 90 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age >=90 ";
+			rs = stmt .executeQuery(sql);
+			if (rs.next()) {
+				a.add(rs.getInt("a"));
+			} else {
+			    // 結果がない場合の処理
+				a.add(0);
+			}
+			Age.add(a);
+		}
+		this.Age = Age;
+		
+		
+		con.close();
+		stmt.close();
+	}
+	
 	//questionCodeからすべてを取り出す
 	public void QI() throws Exception{
 		con = DriverManager.getConnection(url,user,pass);
