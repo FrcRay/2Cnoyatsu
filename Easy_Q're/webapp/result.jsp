@@ -32,18 +32,7 @@
 		}
 	%>
 	
-	<!--
-	<input type="submit" value="<-">
-	<input type="submit" value="->">
-	-->
-	
-	<%
-		int uc = (int) session.getAttribute("usercode");
-	%>
-	
-	
 	<FORM method="GET" action="../signIn/" class = "bottombt">
-		<input type="hidden" name="UC" value="<%= uc %>">
 		<input type="submit" value="ホームに戻る">
 	</FORM>
 </body>

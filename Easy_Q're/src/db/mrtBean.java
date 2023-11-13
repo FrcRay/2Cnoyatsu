@@ -12,6 +12,7 @@ public class mrtBean implements Serializable{
 	
 	static Connection con;
 	private String q_serchbox = "";
+	private int usercode;
 	//selectQ
 	private List<Integer> questionCodeList = new ArrayList<>();
 	private List<String> questionList = new ArrayList<>();
@@ -28,6 +29,10 @@ public class mrtBean implements Serializable{
 	private static String url = "jdbc:postgresql://tokushima.data.ise.shibaura-it.ac.jp:5432/qredb";
 	private static String user = "al21020";
 	private static String pass = "bond";
+	
+	public void set_usercode(int uc) {
+		this.usercode=uc;
+	}
 	
 	public void setQ_serchbox(String w) {
 		this.q_serchbox=w;
@@ -88,17 +93,18 @@ public class mrtBean implements Serializable{
 	public void selectQ2() throws Exception{
 		con = DriverManager.getConnection(url,user,pass);
 		Statement stmt = con.createStatement();
-		String sql = "SELECT question FROM QI";
+		String sql = "SELECT A.questioncode, A.question FROM QI A, QUCODE B where B.usercode='"+this.usercode+"' and A.questioncode=B.questioncode and B.almade='t";
 		ResultSet rs = stmt .executeQuery(sql);
 		//List用意
+		List<Integer> qCL = new ArrayList<>();
 		List<String> qL = new ArrayList<>();
 		//データ取得
 		while (rs.next()) {
-			//qCL.add(rs.getInt("questioncode"));
-			qL.add(rs.getString("question"));
+			qCL.add(rs.getInt("A.questioncode"));
+			qL.add(rs.getString("A.question"));
 		}
-		//this.questionCode = qCL;
-		this.question2 = qL;
+		this.questionCodeList = qCL;
+		this.questionList = qL;
 		con.close();
 		stmt.close();
 	}

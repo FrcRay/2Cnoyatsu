@@ -4,6 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>アンケート結果_表示</title>
+<!-- Chart.jsを読み込む -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 </head>
 <body bgcolor="#FFFFFF">
 <H1>アンケート結果</H1>
@@ -19,6 +21,86 @@
 			String Q = question.get(0);
 	%>
 			<%= Q %><br>
+	<canvas id="myPieChart" width="500" height="500"></canvas>
+	
+	<%
+		if(question.get(3).length()==0){
+	%>
+		<script>
+    	// Chart.jsを使用して円グラフを描画
+    	var ctx = document.getElementById('myPieChart').getContext('2d');
+    	var myPieChart = new Chart(ctx, {
+        	type: 'pie',
+        	data: {
+            	labels: ['<%= question.get(1) %>',' <%= question.get(2) %>'],
+            	datasets: [{
+                	label: 'Example Pie Chart',
+                	data: [<%= outcomeList.get(0) %>,<%= outcomeList.get(1) %>],
+                	backgroundColor: [
+                    	'rgba(255, 99, 132, 0.2)',
+                    	'rgba(54, 162, 235, 0.2)',
+                    	'rgba(255, 206, 86, 0.2)',
+                	],
+                	borderColor: [
+                    	'rgba(255, 99, 132, 1)',
+                    	'rgba(54, 162, 235, 1)',
+                    	'rgba(255, 206, 86, 1)',
+                	],
+                	borderWidth: 1
+            	}]
+        	},
+        	options: {
+            	responsive:false,
+            	maintainAspectRatio: false,
+            	scales: {
+                	y: {
+                    	beginAtZero: true
+                	}
+            	}
+        	}
+    	});
+	</script>
+	<%
+		}else{
+	%>
+	<script>
+    	// Chart.jsを使用して円グラフを描画
+    	var ctx = document.getElementById('myPieChart').getContext('2d');
+    	var myPieChart = new Chart(ctx, {
+        	type: 'pie',
+        	data: {
+            	labels: ['<%= question.get(1) %>', '<%= question.get(2) %>', '<%= question.get(3) %>'],
+            	datasets: [{
+                	label: 'Example Pie Chart',
+                	data: [<%= outcomeList.get(0) %>,<%= outcomeList.get(1) %>,<%= outcomeList.get(2) %>],
+                	backgroundColor: [
+                    	'rgba(255, 99, 132, 0.2)',
+                    	'rgba(54, 162, 235, 0.2)',
+                    	'rgba(255, 206, 86, 0.2)',
+                	],
+                	borderColor: [
+                    	'rgba(255, 99, 132, 1)',
+                    	'rgba(54, 162, 235, 1)',
+                    	'rgba(255, 206, 86, 1)',
+                	],
+                	borderWidth: 1
+            	}]
+        	},
+        	options: {
+            	responsive:false,
+            	maintainAspectRatio: false,
+            	scales: {
+                	y: {
+                    	beginAtZero: true
+                	}
+            	}
+        	}
+    	});
+	</script>
+	<%
+		}
+	%>
+
 			<table border="3">
 				<tr>
 					<th>選択肢</th>
