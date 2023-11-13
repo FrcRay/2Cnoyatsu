@@ -16,8 +16,9 @@
 	//ユーザネーム取り出し
 	String un = (String) session.getAttribute("username");
 	%>
-	<h1>
-		ログイン中のユーザコード：<%= uc%><br>ログイン中のユーザネーム：<%= un%></h1>
+	<h2>
+		ログイン中のユーザコード：<%= uc%><br>ログイン中のユーザネーム：<%= un%></h2>
+	<h1>Easy Q're</h1>
 	<div class="buttons">
 		<FORM method="GET" action="http://localhost:8080/Easy_Q're/servlet/answer/">
 			<input type="submit" value="アンケート回答" size="50" class="inputs" />

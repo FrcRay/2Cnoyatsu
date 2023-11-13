@@ -1,22 +1,26 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/Easy_Q're/css/sign.css">
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 	<link rel="stylesheet" type="text/css" href="http://localhost:8080/Easy_Q're/css/home.css">
 	<title>サインイン・サインアップページ</title>
-	
+
 </head>
+
 <body>
-<div class = "sign">
-	<FORM method="GET" action="servlet/signIn/">
-		<h3>ユーザコード入力欄</h3>
-		<h4>ユーザコードは正の数字で入力してください</h4>
-		<input type="number" name = "UC" required minlength="5"/>
-		<input type="submit" value="サインイン" size="50"/>
-	</FORM>
-	<FORM method="GET" action="http://localhost:8080/Easy_Q're/signup.html">
-		<input type="submit" value="サインアップ" size="50"/>
-	</FORM>
-</div>
+	<div class="sign">
+		<FORM method="GET" action="servlet/signIn/">
+			<h3>ユーザコード入力欄</h3>
+			<h4>ユーザコードは正の数字で入力してください</h4>
+			<input type="number" name="UC" required minlength="5" />
+			<input type="submit" value="サインイン" size="50" />
+		</FORM>
+		<FORM method="GET" action="http://localhost:8080/Easy_Q're/signup.html">
+			<input type="submit" value="サインアップ" size="50" />
+		</FORM>
+	</div>
 </body>
+
 </html>
