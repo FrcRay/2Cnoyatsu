@@ -22,7 +22,7 @@
 	<br>
 	<br>
 	<FORM method="GET" action="http://localhost:8080/Easy_Q're/home.jsp" class = "bottombt">
-			<input type="submit" value="ホームに戻る">
+			<input type="submit" value="ホームに戻る" style="background-color:#f0908d; width: 255px;">
 	</FORM>
 </body>
 </html>

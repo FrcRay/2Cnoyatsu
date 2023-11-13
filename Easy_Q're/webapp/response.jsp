@@ -14,13 +14,15 @@
 		mess = "ユーザコードがデータベース上に見つかりませんでした。";
 	}else if(sc == 1){
 		mess = "ユーザ作成に失敗しました。";
+	}else if(sc == 2){
+		mess = "サインアウトしました。";
 	}
 %>
 <h1><%= mess %></h1>
 	<br>
 	<br>
-	<FORM method="GET" action="http://localhost:8080/Easy_Q're/sign.html" class = "bottombt">
-			<input type="submit" value="サインイン・サインアップページに戻る">
+	<FORM method="GET" action="http://localhost:8080/Easy_Q're/sign.html" >
+			<input type="submit" value="サインイン・サインアップページに戻る" style="background-color:#f0908d; width: 255px;">
 	</FORM>
 </body>
 </html>

@@ -12,6 +12,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>signOut</servlet-name>
+    <servlet-class>signOutServlet</servlet-class>
+  </servlet>
+
+  <servlet>
     <servlet-name>answer</servlet-name>
     <servlet-class>answerServlet</servlet-class>
   </servlet>
@@ -49,6 +54,11 @@
   <servlet-mapping>
     <servlet-name>signUp</servlet-name>
     <url-pattern>/servlet/signUp/</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>signOut</servlet-name>
+    <url-pattern>/servlet/signOut/</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

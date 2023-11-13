@@ -10,7 +10,6 @@
 <!-- action内のurlは/から始めない -->
 <body bgcolor="#FFFFFF">
 	<%
-	//int uc = (int) SB.getUsercode();
 	//セッションからユーザコードを取得
 	int uc = (int) session.getAttribute("usercode");
 	//ユーザネーム取り出し
@@ -18,6 +17,9 @@
 	%>
 	<h2>
 		ログイン中のユーザコード：<%= uc%><br>ログイン中のユーザネーム：<%= un%></h2>
+		<FORM method="GET" action="http://localhost:8080/Easy_Q're/servlet/signOut/">
+            <input type="submit" value="サインアウト" style="width: 200px; height: 50px;"/>
+        </FORM>
 	<h1>Easy Q're</h1>
 	<div class="buttons">
 		<FORM method="GET" action="http://localhost:8080/Easy_Q're/servlet/answer/">
