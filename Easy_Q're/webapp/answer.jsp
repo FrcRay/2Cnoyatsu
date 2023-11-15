@@ -35,21 +35,18 @@
 	<body>
 		<%
 			int questionCode = (int) session.getAttribute("questionCode");
-			String question = (String) kB.getQuestion(questionCode);
-			String option1 = (String) kB.getOption("1", questionCode);
-			String option2 = (String) kB.getOption("2", questionCode);
-			String option3 = (String) kB.getOption("3", questionCode);
+			String[] question = (String[]) kB.getQuestion(questionCode);
 		%>
 		<h1>アンケート回答ページ</h1>
 		
-		<h3><%=question %></h3>
+		<h3><%=question[0] %></h3>
 		
 		<div class="buttons">
 			<FORM method="GET" action="../answer2/">
-				<input type="submit" value= "<%=option1 %>" name = "1" >
-				<input type="submit" value= "<%=option2 %>" name = "2">
-				<%if(option3.equals("") == false){ %>
-				<input type="submit" value= "<%=option3 %>" name = "3">
+				<input type="submit" value= "<%=question[1] %>" name = "1" >
+				<input type="submit" value= "<%=question[2] %>" name = "2">
+				<%if(question[3].equals("") == false){ %>
+				<input type="submit" value= "<%=question[3] %>" name = "3">
 				<%} %>
 			</FORM>
 	 	</div>

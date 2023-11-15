@@ -55,18 +55,22 @@ public class kkcBean implements Serializable{
 		return -1;
 	}
 	
-	public String getQuestion(int questionCode){
+	public String[] getQuestion(int questionCode){
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String question = "";
-		String sql = "SELECT question FROM QI WHERE questionCode = '" + questionCode + "'";
+		String[] question;
+		question = new String[4];
+		String sql = "SELECT * FROM QI WHERE questionCode = '" + questionCode + "'";
 		try {
 			con = DriverManager.getConnection(url, user ,pass);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				question = rs.getString("question");
+				question[0] = rs.getString("question");
+				question[1] = rs.getString("option1");
+				question[2] = rs.getString("option2");
+				question[3] = rs.getString("option3");
 			}
 		}catch(Exception e){
 			throw new IllegalStateException(e);
@@ -75,27 +79,6 @@ public class kkcBean implements Serializable{
 		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
 		if(con != null) try {con.close();}catch(SQLException ignore) {}
 		return question;
-	}
-	
-	public String getOption(String optionNumber, int questionCode){
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		String option = "";
-		String sql = "SELECT option"+ optionNumber +" FROM QI WHERE questionCode = '" + questionCode + "'";
-		try {
-			con = DriverManager.getConnection(url, user ,pass);
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
-			while (rs.next()) {
-				option = rs.getString("Option"+ optionNumber);
-			}
-		}catch(Exception e){
-			throw new IllegalStateException(e);
-		}
-		if(stmt != null) try {stmt.close();}catch(SQLException ignore){}
-		if(con != null) try {con.close();}catch(SQLException ignore) {}
-		return option;
 	}
 	
 	public void selectOption(int userCode, int option, int questionCode) {
