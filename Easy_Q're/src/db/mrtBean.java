@@ -169,7 +169,7 @@ public class mrtBean implements Serializable{
 		//age
 		for(int i=1; i<=3; i++) {
 			List<Integer> a = new ArrayList<>();
-			String sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 0 AND 10 ";
+			String sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 0 AND 9 ";
 			ResultSet rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
@@ -178,7 +178,7 @@ public class mrtBean implements Serializable{
 				a.add(0);
 			}
 		
-			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 10 AND 20 ";
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 10 AND 19 ";
 			rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
@@ -187,7 +187,7 @@ public class mrtBean implements Serializable{
 				a.add(0);
 			}
 			
-			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 20 AND 30 ";
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 20 AND 29 ";
 			rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
@@ -196,7 +196,7 @@ public class mrtBean implements Serializable{
 				a.add(0);
 			}
 			
-			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 30 AND 40 ";
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 30 AND 39 ";
 			rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
@@ -205,7 +205,7 @@ public class mrtBean implements Serializable{
 				a.add(0);
 			}
 			
-			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 40 AND 50 ";
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 40 AND 49 ";
 			rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
@@ -214,7 +214,7 @@ public class mrtBean implements Serializable{
 				a.add(0);
 			}
 			
-			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 50 AND 60 ";
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 50 AND 59 ";
 			rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
@@ -223,7 +223,7 @@ public class mrtBean implements Serializable{
 				a.add(0);
 			}
 			
-			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 60 AND 70 ";
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 60 AND 69 ";
 			rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
@@ -232,7 +232,7 @@ public class mrtBean implements Serializable{
 				a.add(0);
 			}
 			
-			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 70 AND 80 ";
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 70 AND 79 ";
 			rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
@@ -241,7 +241,7 @@ public class mrtBean implements Serializable{
 				a.add(0);
 			}
 			
-			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 80 AND 90 ";
+			sql = "SELECT count(A.usercode) as a FROM UI A, QUCODE B WHERE B.questioncode='"+ this.qc +"' and A.usercode=B.usercode and B.numanswer='"+ i +"' and A.age BETWEEN 80 AND 89 ";
 			rs = stmt .executeQuery(sql);
 			if (rs.next()) {
 				a.add(rs.getInt("a"));
